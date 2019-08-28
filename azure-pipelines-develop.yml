@@ -3,9 +3,9 @@
 # Add steps that run tests, create a NuGet package, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
-# the build will trigger on any changes to the master branch
+# the build will trigger on any changes to the develop branch
 trigger:
-- master
+- develop
 
 # the build will run on a Microsoft hosted agent, using the lastest Windows VM Image
 pool:
@@ -16,7 +16,7 @@ pool:
 variables:
   buildConfiguration: 'Release'
   ppBuildCounter: $[counter('buildCounter',1)]
-  ppPrerelease: ''
+  ppPrerelease: 'pre'
 
 #The build has 3 seperate tasks run under 1 step
 steps:
