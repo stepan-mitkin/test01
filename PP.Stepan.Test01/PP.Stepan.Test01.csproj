@@ -2,11 +2,26 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <PackageId>PP.Stepan.Test01</PackageId>
-    <Version>1.0.1</Version>
+    <PackageId>PP.Stepan.Test01</PackageId>    
+    <VersionPrefix>1.0</VersionPrefix> 
     <Authors>Stepan Mitkin</Authors>
     <Description>A test nuget package</Description>
     <IsPackable>true</IsPackable>
   </PropertyGroup>
+
+  <Choose>
+    <When Condition=" '$(ppPrerelease)' != '' ">
+      <PropertyGroup>
+        <!-- Prerelease version numbers are MAJOR.MINOR.0-pre-build###### -->
+        <VersionSuffix>$(ppPrerelease)-build$(ppBuildCounter.PadLeft(6, '0'))</VersionSuffix>
+      </PropertyGroup>
+    </When>
+    <Otherwise>
+      <PropertyGroup>
+        <!-- Release version numbers are MAJOR.MINOR.# -->
+        <VersionPrefix>$(VersionPrefix).$(ppBuildCounter.PadLeft(1, '0'))</VersionPrefix>
+      </PropertyGroup>
+    </Otherwise>
+  </Choose>  
 
 </Project>
