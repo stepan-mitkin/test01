@@ -8,7 +8,7 @@ namespace PP.Stepan.Test01
     {
         public static string Hello()
         {
-            return "Hello - original";
+            return "Hello - orange";
         }
     }
 }
